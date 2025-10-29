@@ -1,0 +1,67 @@
+/**
+ * DottedLetter Component Styles
+ */
+
+.dotted-letter {
+  flex: 0 0 auto;
+  width: 100px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.trace-dot {
+  transition: fill var(--transition-fast);
+}
+
+.trace-dot:hover {
+  fill: var(--color-primary);
+}
+
+.guide-letter {
+  opacity: 0.15;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+/* Print Styles */
+@media print {
+  .dotted-letter {
+    width: 70px;
+    height: 60px;
+  }
+
+  .trace-dot {
+    fill: #999999;
+  }
+
+  .guide-letter {
+    opacity: 0.1;
+  }
+
+  /* Ensure dots are visible when printed */
+  .trace-dot {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  .letter-svg {
+    overflow: visible;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .dotted-letter {
+    width: 60px;
+    height: 60px;
+  }
+}

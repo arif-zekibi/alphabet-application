@@ -1,0 +1,169 @@
+/**
+ * PracticeSheet Component Styles
+ */
+
+.practice-sheet {
+  background: white;
+  width: 100%;
+  max-width: 210mm;
+  min-height: 297mm;
+  padding: 20mm;
+  box-shadow: 0 10px 40px var(--color-shadow);
+  border-radius: var(--border-radius-md);
+  margin: 0 auto;
+}
+
+.practice-sheet-empty {
+  background: white;
+  width: 100%;
+  max-width: 210mm;
+  min-height: 400px;
+  padding: var(--spacing-xl);
+  box-shadow: 0 10px 40px var(--color-shadow);
+  border-radius: var(--border-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.empty-message {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Sheet Header */
+.sheet-header {
+  text-align: center;
+  margin-bottom: 10mm;
+  padding-bottom: 5mm;
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.sheet-title {
+  font-family: var(--font-family-display);
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  font-weight: 700;
+}
+
+.sheet-info {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+}
+
+.letter-display,
+.case-display {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.letter-display strong,
+.case-display strong {
+  color: var(--color-primary);
+  font-size: 1.3rem;
+}
+
+/* Practice Lines Container */
+.practice-lines-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10mm;
+  margin-bottom: 10mm;
+}
+
+/* Sheet Footer */
+.sheet-footer {
+  text-align: center;
+  padding-top: 10mm;
+  border-top: 2px dashed var(--color-border);
+}
+
+.footer-text {
+  font-family: var(--font-family-display);
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  .practice-sheet {
+    box-shadow: none;
+    border-radius: 0;
+    max-width: 100%;
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    padding: 10mm;
+    margin: 0;
+    page-break-after: avoid;
+  }
+
+  .sheet-header {
+    margin-bottom: 6mm;
+    padding-bottom: 3mm;
+    border-bottom-width: 2px;
+  }
+
+  .sheet-title {
+    font-size: 1.3rem;
+    margin-bottom: 3mm;
+  }
+
+  .sheet-info {
+    font-size: 0.9rem;
+  }
+
+  .practice-lines-container {
+    gap: 8mm;
+    margin-bottom: 5mm;
+  }
+
+  .sheet-footer {
+    padding-top: 5mm;
+  }
+
+  .footer-text {
+    font-size: 0.9rem;
+  }
+
+  .practice-sheet-empty {
+    display: none;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .practice-sheet {
+    max-width: 100%;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-sm);
+  }
+
+  .sheet-title {
+    font-size: 1.5rem;
+  }
+
+  .sheet-info {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .practice-lines-container {
+    gap: var(--spacing-xl);
+  }
+}

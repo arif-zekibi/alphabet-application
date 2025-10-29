@@ -1,0 +1,100 @@
+/**
+ * PracticeLine Component Styles
+ * Four-line handwriting practice standard
+ */
+
+.practice-line {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+/* Guide Lines Container */
+.guide-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.guide-line {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  border-top-width: 2px;
+  border-top-style: solid;
+}
+
+/* Four-line positions (based on standard handwriting guidelines) */
+.guide-line-top {
+  top: 0;
+  border-top-style: solid;
+  border-top-width: 1.5px;
+}
+
+.guide-line-middle-top {
+  top: 25%;
+  border-top-style: dashed;
+  border-top-width: 1px;
+}
+
+.guide-line-baseline {
+  top: 62.5%;
+  border-top-style: solid;
+  border-top-width: 2px;
+}
+
+.guide-line-bottom {
+  top: 100%;
+  border-top-style: solid;
+  border-top-width: 1.5px;
+}
+
+/* Letters Container */
+.letters-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 100%;
+  padding: 0 10px;
+  padding-bottom: 30%;
+}
+
+/* Print Styles */
+@media print {
+  .practice-line {
+    height: 60px;
+    margin-bottom: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .letters-container {
+    padding-bottom: 30%;
+  }
+
+  .guide-line-top,
+  .guide-line-bottom {
+    border-top-width: 1px;
+  }
+
+  .guide-line-baseline {
+    border-top-width: 2px;
+  }
+
+  .guide-line-middle-top {
+    border-top-width: 1px;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .practice-line {
+    height: 60px;
+  }
+}
