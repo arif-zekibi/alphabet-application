@@ -1,36 +1,80 @@
 /**
  * AlphabetSelector Component
- * Dropdown component for selecting an alphabet letter
+ * Multi-select component for selecting alphabet letters
  */
 
-import React from 'react';
 import { ALPHABETS } from '../constants/appConstants';
 import '../styles/AlphabetSelector.css';
 
-const AlphabetSelector = ({ selectedLetter, onLetterChange }) => {
-  const handleChange = (event) => {
-    onLetterChange(event.target.value);
+const AlphabetSelector = ({ selectedLetters, onLetterChange }) => {
+  const handleLetterToggle = (letter) => {
+    if (selectedLetters.includes(letter)) {
+      // Remove letter if already selected
+      onLetterChange(selectedLetters.filter(l => l !== letter));
+    } else {
+      // Add letter to selection
+      onLetterChange([...selectedLetters, letter]);
+    }
+  };
+
+  const handleClearAll = () => {
+    onLetterChange([]);
+  };
+
+  const handleSelectAll = () => {
+    onLetterChange([...ALPHABETS]);
   };
 
   return (
     <div className="alphabet-selector">
-      <label htmlFor="alphabet-select" className="selector-label">
-        Select Alphabet:
-      </label>
-      <select
-        id="alphabet-select"
-        className="selector-dropdown"
-        value={selectedLetter}
-        onChange={handleChange}
-        aria-label="Select an alphabet letter"
-      >
-        <option value="">-- Choose a Letter --</option>
+      <div className="selector-header">
+        <label className="selector-label">
+          Select Alphabets:
+        </label>
+        <div className="selector-actions">
+          <button
+            className="btn-small btn-secondary"
+            onClick={handleSelectAll}
+            type="button"
+          >
+            Select All
+          </button>
+          <button
+            className="btn-small btn-secondary"
+            onClick={handleClearAll}
+            type="button"
+            disabled={selectedLetters.length === 0}
+          >
+            Clear All
+          </button>
+        </div>
+      </div>
+
+      {selectedLetters.length > 0 && (
+        <div className="selected-letters-display">
+          <span className="selected-count">
+            Selected ({selectedLetters.length}):
+          </span>
+          <span className="selected-letters">
+            {selectedLetters.join(', ')}
+          </span>
+        </div>
+      )}
+
+      <div className="alphabet-grid">
         {ALPHABETS.map((letter) => (
-          <option key={letter} value={letter}>
+          <button
+            key={letter}
+            className={`alphabet-button ${selectedLetters.includes(letter) ? 'selected' : ''}`}
+            onClick={() => handleLetterToggle(letter)}
+            type="button"
+            aria-label={`${selectedLetters.includes(letter) ? 'Deselect' : 'Select'} letter ${letter}`}
+            aria-pressed={selectedLetters.includes(letter)}
+          >
             {letter}
-          </option>
+          </button>
         ))}
-      </select>
+      </div>
     </div>
   );
 };

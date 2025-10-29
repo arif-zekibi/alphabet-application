@@ -11,7 +11,7 @@ import './styles/App.css';
 
 function App() {
   const {
-    selectedLetter,
+    selectedLetters,
     selectedCase,
     handleLetterChange,
     handleCaseChange,
@@ -23,7 +23,7 @@ function App() {
       {/* Control Panel - Hidden during print */}
       <div className="no-print">
         <ControlPanel
-          selectedLetter={selectedLetter}
+          selectedLetters={selectedLetters}
           selectedCase={selectedCase}
           onLetterChange={handleLetterChange}
           onCaseChange={handleCaseChange}
@@ -34,7 +34,7 @@ function App() {
       {/* Practice Sheet - Main printable area */}
       <div className="print-area">
         <PracticeSheet
-          letter={selectedLetter}
+          letters={selectedLetters}
           caseType={selectedCase}
         />
       </div>

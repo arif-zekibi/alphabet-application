@@ -9,13 +9,13 @@ import CaseSelector from './CaseSelector';
 import '../styles/ControlPanel.css';
 
 const ControlPanel = ({
-  selectedLetter,
+  selectedLetters,
   selectedCase,
   onLetterChange,
   onCaseChange,
   onPrint,
 }) => {
-  const canGenerate = selectedLetter && selectedCase;
+  const canGenerate = selectedLetters.length > 0 && selectedCase;
 
   return (
     <div className="control-panel">
@@ -28,7 +28,7 @@ const ControlPanel = ({
 
       <div className="controls-container">
         <AlphabetSelector
-          selectedLetter={selectedLetter}
+          selectedLetters={selectedLetters}
           onLetterChange={onLetterChange}
         />
 
@@ -51,7 +51,7 @@ const ControlPanel = ({
 
       {!canGenerate && (
         <div className="help-text">
-          <p>Select a letter and case to get started</p>
+          <p>Select at least one letter and case to get started</p>
         </div>
       )}
     </div>

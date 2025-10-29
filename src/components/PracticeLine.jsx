@@ -1,6 +1,6 @@
 /**
  * PracticeLine Component
- * Renders a single practice line with four guide lines and dotted letter
+ * Renders a single practice line with four guide lines and dotted letters
  */
 
 import React from 'react';
@@ -8,8 +8,8 @@ import DottedLetter from './DottedLetter';
 import { PRACTICE_LINE_COLORS } from '../constants/appConstants';
 import '../styles/PracticeLine.css';
 
-const PracticeLine = ({ letter, caseType, lineNumber }) => {
-  if (!letter) return null;
+const PracticeLine = ({ letters, caseType, lineNumber }) => {
+  if (!letters || letters.length === 0) return null;
 
   return (
     <div className="practice-line" data-line-number={lineNumber}>
@@ -42,10 +42,10 @@ const PracticeLine = ({ letter, caseType, lineNumber }) => {
 
       {/* Dotted letters for tracing */}
       <div className="letters-container">
-        {/* Show the letter 5 times for practice */}
-        {[...Array(5)].map((_, index) => (
+        {/* Display the letters passed for this line */}
+        {letters.map((letter, index) => (
           <DottedLetter
-            key={`${letter}-${caseType}-${index}`}
+            key={`${letter}-${caseType}-${lineNumber}-${index}`}
             letter={letter}
             caseType={caseType}
             position={index}

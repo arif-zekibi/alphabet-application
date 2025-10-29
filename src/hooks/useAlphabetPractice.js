@@ -7,14 +7,14 @@ import { useState, useCallback } from 'react';
 import { CASE_TYPES } from '../constants/appConstants';
 
 const useAlphabetPractice = () => {
-  const [selectedLetter, setSelectedLetter] = useState('');
+  const [selectedLetters, setSelectedLetters] = useState([]);
   const [selectedCase, setSelectedCase] = useState(CASE_TYPES.UPPERCASE);
 
   /**
-   * Handle letter selection change
+   * Handle letter selection change (now supports multiple letters)
    */
-  const handleLetterChange = useCallback((letter) => {
-    setSelectedLetter(letter);
+  const handleLetterChange = useCallback((letters) => {
+    setSelectedLetters(letters);
   }, []);
 
   /**
@@ -28,25 +28,25 @@ const useAlphabetPractice = () => {
    * Handle print action
    */
   const handlePrint = useCallback(() => {
-    if (!selectedLetter) {
-      alert('Please select a letter first');
+    if (selectedLetters.length === 0) {
+      alert('Please select at least one letter first');
       return;
     }
 
     // Trigger browser print dialog
     window.print();
-  }, [selectedLetter]);
+  }, [selectedLetters]);
 
   /**
    * Reset all selections
    */
   const handleReset = useCallback(() => {
-    setSelectedLetter('');
+    setSelectedLetters([]);
     setSelectedCase(CASE_TYPES.UPPERCASE);
   }, []);
 
   return {
-    selectedLetter,
+    selectedLetters,
     selectedCase,
     handleLetterChange,
     handleCaseChange,

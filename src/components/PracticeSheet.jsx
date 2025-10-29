@@ -8,15 +8,33 @@ import PracticeLine from './PracticeLine';
 import { PRACTICE_CONFIG } from '../constants/appConstants';
 import '../styles/PracticeSheet.css';
 
-const PracticeSheet = ({ letter, caseType }) => {
-  if (!letter) {
+const PracticeSheet = ({ letters, caseType }) => {
+  if (!letters || letters.length === 0) {
     return (
       <div className="practice-sheet-empty">
         <p className="empty-message">
-          Please select a letter and case to generate practice sheet
+          Please select at least one letter and case to generate practice sheet
         </p>
       </div>
     );
+  }
+
+  // Calculate total positions needed (lines * letters per line)
+  const LETTERS_PER_LINE = 5;
+  const totalPositions = PRACTICE_CONFIG.LINES_PER_PAGE * LETTERS_PER_LINE;
+
+  // Create a continuous flow of letters across all lines
+  const allLetters = [];
+  for (let i = 0; i < totalPositions; i++) {
+    allLetters.push(letters[i % letters.length]);
+  }
+
+  // Split into lines
+  const linesData = [];
+  for (let i = 0; i < PRACTICE_CONFIG.LINES_PER_PAGE; i++) {
+    const startIndex = i * LETTERS_PER_LINE;
+    const lineLetters = allLetters.slice(startIndex, startIndex + LETTERS_PER_LINE);
+    linesData.push(lineLetters);
   }
 
   return (
@@ -28,7 +46,9 @@ const PracticeSheet = ({ letter, caseType }) => {
         </h2>
         <div className="sheet-info">
           <span className="letter-display">
-            Letter: <strong>{caseType === 'uppercase' ? letter.toUpperCase() : letter.toLowerCase()}</strong>
+            Letters: <strong>
+              {letters.map(l => caseType === 'uppercase' ? l.toUpperCase() : l.toLowerCase()).join(', ')}
+            </strong>
           </span>
           <span className="case-display">
             Case: <strong>{caseType === 'uppercase' ? 'UPPERCASE' : 'lowercase'}</strong>
@@ -38,10 +58,10 @@ const PracticeSheet = ({ letter, caseType }) => {
 
       {/* Practice Lines */}
       <div className="practice-lines-container">
-        {[...Array(PRACTICE_CONFIG.LINES_PER_PAGE)].map((_, index) => (
+        {linesData.map((lineLetters, index) => (
           <PracticeLine
             key={`line-${index}`}
-            letter={letter}
+            letters={lineLetters}
             caseType={caseType}
             lineNumber={index + 1}
           />
