@@ -39,23 +39,6 @@ const PracticeSheet = ({ letters, caseType }) => {
 
   return (
     <div className="practice-sheet" id="practice-sheet">
-      {/* Sheet Header */}
-      <div className="sheet-header">
-        <h2 className="sheet-title">
-          Alphabet Practice Sheet
-        </h2>
-        <div className="sheet-info">
-          <span className="letter-display">
-            Letters: <strong>
-              {letters.map(l => caseType === 'uppercase' ? l.toUpperCase() : l.toLowerCase()).join(', ')}
-            </strong>
-          </span>
-          <span className="case-display">
-            Case: <strong>{caseType === 'uppercase' ? 'UPPERCASE' : 'lowercase'}</strong>
-          </span>
-        </div>
-      </div>
-
       {/* Practice Lines */}
       <div className="practice-lines-container">
         {linesData.map((lineLetters, index) => (
@@ -66,11 +49,6 @@ const PracticeSheet = ({ letters, caseType }) => {
             lineNumber={index + 1}
           />
         ))}
-      </div>
-
-      {/* Sheet Footer */}
-      <div className="sheet-footer">
-        <p className="footer-text">Practice makes perfect! Keep tracing.</p>
       </div>
     </div>
   );

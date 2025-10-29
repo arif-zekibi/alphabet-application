@@ -39,7 +39,7 @@ export const A4_DIMENSIONS = {
 
 // Practice line configuration
 export const PRACTICE_CONFIG = {
-  LINES_PER_PAGE: 8,
+  LINES_PER_PAGE: 15,
   LETTER_SPACING: 60,
   DOT_SIZE: 8,
   DOT_COLOR: '#CCCCCC',

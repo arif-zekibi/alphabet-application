@@ -16,9 +16,10 @@ const DottedLetter = ({ letter, caseType, position }) => {
     <div className="dotted-letter" data-position={position}>
       <svg
         className="letter-svg"
-        viewBox="0 0 100 80"
+        viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
         aria-label={`Trace the letter ${displayLetter}`}
+        preserveAspectRatio="xMidYMid meet"
       >
         {/* Render dots for tracing */}
         {dots.map((dot, index) => (
@@ -32,16 +33,17 @@ const DottedLetter = ({ letter, caseType, position }) => {
           />
         ))}
 
-        {/* Optional: Show a faint guide letter behind dots */}
+        {/* Show letter aligned with three-line system */}
         <text
           x="50"
-          y="55"
-          fontSize="48"
-          fontFamily="Arial, sans-serif"
-          fontWeight="bold"
+          y="70"
+          fontSize="45"
+          fontFamily="Tw Cen MT, Century Gothic, Arial, sans-serif"
+          fontWeight="normal"
           textAnchor="middle"
-          fill="#F0F0F0"
+          fill="#E0E0E0"
           className="guide-letter"
+          dominantBaseline="baseline"
         >
           {displayLetter}
         </text>
