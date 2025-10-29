@@ -96,11 +96,6 @@
 
 /* Print Styles */
 @media print {
-  @page {
-    size: A4;
-    margin: 10mm;
-  }
-
   .practice-sheet {
     box-shadow: none;
     border-radius: 0;
@@ -108,37 +103,34 @@
     width: 100%;
     min-height: auto;
     height: auto;
-    padding: 10mm;
+    padding: 0;
     margin: 0;
     page-break-after: avoid;
   }
 
   .sheet-header {
-    margin-bottom: 6mm;
-    padding-bottom: 3mm;
-    border-bottom-width: 2px;
+    display: none;
   }
 
   .sheet-title {
-    font-size: 1.3rem;
-    margin-bottom: 3mm;
+    display: none;
   }
 
   .sheet-info {
-    font-size: 0.9rem;
+    display: none;
   }
 
   .practice-lines-container {
-    gap: 8mm;
-    margin-bottom: 5mm;
+    gap: 5mm;
+    margin-bottom: 0;
   }
 
   .sheet-footer {
-    padding-top: 5mm;
+    display: none;
   }
 
   .footer-text {
-    font-size: 0.9rem;
+    display: none;
   }
 
   .practice-sheet-empty {

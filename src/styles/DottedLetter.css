@@ -34,8 +34,8 @@
 /* Print Styles */
 @media print {
   .dotted-letter {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
 
   .trace-dot {
@@ -43,7 +43,10 @@
   }
 
   .guide-letter {
-    opacity: 0.15;
+    opacity: 0.2;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
   }
 
   /* Ensure dots are visible when printed */
