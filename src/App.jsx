@@ -13,8 +13,10 @@ function App() {
   const {
     selectedLetters,
     selectedCase,
+    linesCount,
     handleLetterChange,
     handleCaseChange,
+    handleLinesChange,
     handlePrint,
   } = useAlphabetPractice();
 
@@ -25,8 +27,10 @@ function App() {
         <ControlPanel
           selectedLetters={selectedLetters}
           selectedCase={selectedCase}
+          linesCount={linesCount}
           onLetterChange={handleLetterChange}
           onCaseChange={handleCaseChange}
+          onLinesChange={handleLinesChange}
           onPrint={handlePrint}
         />
       </div>
@@ -36,6 +40,7 @@ function App() {
         <PracticeSheet
           letters={selectedLetters}
           caseType={selectedCase}
+          linesCount={linesCount}
         />
       </div>
     </div>

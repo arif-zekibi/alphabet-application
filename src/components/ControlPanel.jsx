@@ -6,13 +6,16 @@
 import React from 'react';
 import AlphabetSelector from './AlphabetSelector';
 import CaseSelector from './CaseSelector';
+import LinesSelector from './LinesSelector';
 import '../styles/ControlPanel.css';
 
 const ControlPanel = ({
   selectedLetters,
   selectedCase,
+  linesCount,
   onLetterChange,
   onCaseChange,
+  onLinesChange,
   onPrint,
 }) => {
   const canGenerate = selectedLetters.length > 0 && selectedCase;
@@ -35,6 +38,11 @@ const ControlPanel = ({
         <CaseSelector
           selectedCase={selectedCase}
           onCaseChange={onCaseChange}
+        />
+
+        <LinesSelector
+          selectedLines={linesCount}
+          onLinesChange={onLinesChange}
         />
 
         <div className="action-buttons">

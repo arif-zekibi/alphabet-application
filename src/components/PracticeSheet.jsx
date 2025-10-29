@@ -8,7 +8,7 @@ import PracticeLine from './PracticeLine';
 import { PRACTICE_CONFIG } from '../constants/appConstants';
 import '../styles/PracticeSheet.css';
 
-const PracticeSheet = ({ letters, caseType }) => {
+const PracticeSheet = ({ letters, caseType, linesCount = PRACTICE_CONFIG.LINES_PER_PAGE }) => {
   if (!letters || letters.length === 0) {
     return (
       <div className="practice-sheet-empty">
@@ -21,7 +21,7 @@ const PracticeSheet = ({ letters, caseType }) => {
 
   // Calculate total positions needed (lines * letters per line)
   const LETTERS_PER_LINE = 5;
-  const totalPositions = PRACTICE_CONFIG.LINES_PER_PAGE * LETTERS_PER_LINE;
+  const totalPositions = linesCount * LETTERS_PER_LINE;
 
   // Create a continuous flow of letters across all lines
   const allLetters = [];
@@ -31,7 +31,7 @@ const PracticeSheet = ({ letters, caseType }) => {
 
   // Split into lines
   const linesData = [];
-  for (let i = 0; i < PRACTICE_CONFIG.LINES_PER_PAGE; i++) {
+  for (let i = 0; i < linesCount; i++) {
     const startIndex = i * LETTERS_PER_LINE;
     const lineLetters = allLetters.slice(startIndex, startIndex + LETTERS_PER_LINE);
     linesData.push(lineLetters);
