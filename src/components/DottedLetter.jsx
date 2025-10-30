@@ -8,7 +8,16 @@ import { generateDottedLetterPath, convertCase } from '../utils/alphabetUtils';
 import { PRACTICE_CONFIG, DISPLAY_STYLES } from '../constants/appConstants';
 import '../styles/DottedLetter.css';
 
-const DottedLetter = ({ letter, caseType, position, displayStyle, opacity, fontSize = PRACTICE_CONFIG.DEFAULT_FONT_SIZE }) => {
+const DottedLetter = ({
+  letter,
+  caseType,
+  position,
+  displayStyle,
+  opacity,
+  fontSize = PRACTICE_CONFIG.DEFAULT_FONT_SIZE,
+  strokeWidth = PRACTICE_CONFIG.DEFAULT_STROKE_WIDTH,
+  fontWeight = PRACTICE_CONFIG.DEFAULT_FONT_WEIGHT
+}) => {
   const dots = generateDottedLetterPath(letter, caseType);
   const displayLetter = convertCase(letter, caseType);
   const isDotted = displayStyle === DISPLAY_STYLES.DOTTED;
@@ -40,10 +49,12 @@ const DottedLetter = ({ letter, caseType, position, displayStyle, opacity, fontS
           y="70"
           fontSize={isDotted ? 45 : fontSize}
           fontFamily="Tw Cen MT, Century Gothic, Arial, sans-serif"
-          fontWeight="normal"
+          fontWeight={isDotted ? "normal" : fontWeight}
           textAnchor="middle"
-          fill={isDotted ? "#E0E0E0" : "#000000"}
+          fill={isDotted ? "#E0E0E0" : (strokeWidth > 0 ? "none" : "#000000")}
           opacity={isDotted ? 1 : opacity}
+          stroke={strokeWidth > 0 ? "#000000" : "none"}
+          strokeWidth={strokeWidth}
           className="guide-letter"
           dominantBaseline="baseline"
         >

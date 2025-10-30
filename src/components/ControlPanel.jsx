@@ -10,6 +10,8 @@ import LinesSelector from './LinesSelector';
 import DisplayStyleSelector from './DisplayStyleSelector';
 import OpacitySelector from './OpacitySelector';
 import FontSizeSelector from './FontSizeSelector';
+import StrokeSelector from './StrokeSelector';
+import FontWeightSelector from './FontWeightSelector';
 import { DISPLAY_STYLES } from '../constants/appConstants';
 import '../styles/ControlPanel.css';
 
@@ -20,12 +22,16 @@ const ControlPanel = ({
   displayStyle,
   opacity,
   fontSize,
+  strokeWidth,
+  fontWeight,
   onLetterChange,
   onCaseChange,
   onLinesChange,
   onDisplayStyleChange,
   onOpacityChange,
   onFontSizeChange,
+  onStrokeWidthChange,
+  onFontWeightChange,
   onPrint,
 }) => {
   const canGenerate = selectedLetters.length > 0 && selectedCase;
@@ -70,6 +76,16 @@ const ControlPanel = ({
           fontSize={fontSize}
           onFontSizeChange={onFontSizeChange}
           disabled={displayStyle === DISPLAY_STYLES.DOTTED}
+        />
+
+        <StrokeSelector
+          strokeWidth={strokeWidth}
+          onStrokeWidthChange={onStrokeWidthChange}
+        />
+
+        <FontWeightSelector
+          fontWeight={fontWeight}
+          onFontWeightChange={onFontWeightChange}
         />
 
         <div className="action-buttons">

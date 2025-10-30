@@ -8,7 +8,7 @@ import PracticeLine from './PracticeLine';
 import { PRACTICE_CONFIG } from '../constants/appConstants';
 import '../styles/PracticeSheet.css';
 
-const PracticeSheet = ({ letters, caseType, linesCount = PRACTICE_CONFIG.LINES_PER_PAGE, displayStyle, opacity, fontSize }) => {
+const PracticeSheet = ({ letters, caseType, linesCount = PRACTICE_CONFIG.LINES_PER_PAGE, displayStyle, opacity, fontSize, strokeWidth, fontWeight }) => {
   if (!letters || letters.length === 0) {
     return (
       <div className="practice-sheet-empty">
@@ -50,6 +50,8 @@ const PracticeSheet = ({ letters, caseType, linesCount = PRACTICE_CONFIG.LINES_P
             displayStyle={displayStyle}
             opacity={opacity}
             fontSize={fontSize}
+            strokeWidth={strokeWidth}
+            fontWeight={fontWeight}
           />
         ))}
       </div>

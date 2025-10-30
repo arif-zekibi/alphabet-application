@@ -13,6 +13,8 @@ const useAlphabetPractice = () => {
   const [displayStyle, setDisplayStyle] = useState(DISPLAY_STYLES.DOTTED);
   const [opacity, setOpacity] = useState(PRACTICE_CONFIG.DEFAULT_OPACITY);
   const [fontSize, setFontSize] = useState(PRACTICE_CONFIG.DEFAULT_FONT_SIZE);
+  const [strokeWidth, setStrokeWidth] = useState(PRACTICE_CONFIG.DEFAULT_STROKE_WIDTH);
+  const [fontWeight, setFontWeight] = useState(PRACTICE_CONFIG.DEFAULT_FONT_WEIGHT);
 
   /**
    * Handle letter selection change (now supports multiple letters)
@@ -57,6 +59,20 @@ const useAlphabetPractice = () => {
   }, []);
 
   /**
+   * Handle stroke width change
+   */
+  const handleStrokeWidthChange = useCallback((value) => {
+    setStrokeWidth(value);
+  }, []);
+
+  /**
+   * Handle font weight change
+   */
+  const handleFontWeightChange = useCallback((value) => {
+    setFontWeight(value);
+  }, []);
+
+  /**
    * Handle print action
    */
   const handlePrint = useCallback(() => {
@@ -79,6 +95,8 @@ const useAlphabetPractice = () => {
     setDisplayStyle(DISPLAY_STYLES.DOTTED);
     setOpacity(PRACTICE_CONFIG.DEFAULT_OPACITY);
     setFontSize(PRACTICE_CONFIG.DEFAULT_FONT_SIZE);
+    setStrokeWidth(PRACTICE_CONFIG.DEFAULT_STROKE_WIDTH);
+    setFontWeight(PRACTICE_CONFIG.DEFAULT_FONT_WEIGHT);
   }, []);
 
   return {
@@ -88,12 +106,16 @@ const useAlphabetPractice = () => {
     displayStyle,
     opacity,
     fontSize,
+    strokeWidth,
+    fontWeight,
     handleLetterChange,
     handleCaseChange,
     handleLinesChange,
     handleDisplayStyleChange,
     handleOpacityChange,
     handleFontSizeChange,
+    handleStrokeWidthChange,
+    handleFontWeightChange,
     handlePrint,
     handleReset,
   };

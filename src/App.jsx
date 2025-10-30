@@ -17,12 +17,16 @@ function App() {
     displayStyle,
     opacity,
     fontSize,
+    strokeWidth,
+    fontWeight,
     handleLetterChange,
     handleCaseChange,
     handleLinesChange,
     handleDisplayStyleChange,
     handleOpacityChange,
     handleFontSizeChange,
+    handleStrokeWidthChange,
+    handleFontWeightChange,
     handlePrint,
   } = useAlphabetPractice();
 
@@ -37,12 +41,16 @@ function App() {
           displayStyle={displayStyle}
           opacity={opacity}
           fontSize={fontSize}
+          strokeWidth={strokeWidth}
+          fontWeight={fontWeight}
           onLetterChange={handleLetterChange}
           onCaseChange={handleCaseChange}
           onLinesChange={handleLinesChange}
           onDisplayStyleChange={handleDisplayStyleChange}
           onOpacityChange={handleOpacityChange}
           onFontSizeChange={handleFontSizeChange}
+          onStrokeWidthChange={handleStrokeWidthChange}
+          onFontWeightChange={handleFontWeightChange}
           onPrint={handlePrint}
         />
       </div>
@@ -56,6 +64,8 @@ function App() {
           displayStyle={displayStyle}
           opacity={opacity}
           fontSize={fontSize}
+          strokeWidth={strokeWidth}
+          fontWeight={fontWeight}
         />
       </div>
     </div>
