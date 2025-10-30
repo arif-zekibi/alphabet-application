@@ -8,7 +8,7 @@ import { generateDottedLetterPath, convertCase } from '../utils/alphabetUtils';
 import { PRACTICE_CONFIG, DISPLAY_STYLES } from '../constants/appConstants';
 import '../styles/DottedLetter.css';
 
-const DottedLetter = ({ letter, caseType, position, displayStyle, opacity }) => {
+const DottedLetter = ({ letter, caseType, position, displayStyle, opacity, fontSize = PRACTICE_CONFIG.DEFAULT_FONT_SIZE }) => {
   const dots = generateDottedLetterPath(letter, caseType);
   const displayLetter = convertCase(letter, caseType);
   const isDotted = displayStyle === DISPLAY_STYLES.DOTTED;
@@ -38,7 +38,7 @@ const DottedLetter = ({ letter, caseType, position, displayStyle, opacity }) => 
         <text
           x="50"
           y="70"
-          fontSize="45"
+          fontSize={isDotted ? 45 : fontSize}
           fontFamily="Tw Cen MT, Century Gothic, Arial, sans-serif"
           fontWeight="normal"
           textAnchor="middle"

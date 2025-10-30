@@ -9,6 +9,7 @@ import CaseSelector from './CaseSelector';
 import LinesSelector from './LinesSelector';
 import DisplayStyleSelector from './DisplayStyleSelector';
 import OpacitySelector from './OpacitySelector';
+import FontSizeSelector from './FontSizeSelector';
 import { DISPLAY_STYLES } from '../constants/appConstants';
 import '../styles/ControlPanel.css';
 
@@ -18,11 +19,13 @@ const ControlPanel = ({
   linesCount,
   displayStyle,
   opacity,
+  fontSize,
   onLetterChange,
   onCaseChange,
   onLinesChange,
   onDisplayStyleChange,
   onOpacityChange,
+  onFontSizeChange,
   onPrint,
 }) => {
   const canGenerate = selectedLetters.length > 0 && selectedCase;
@@ -60,6 +63,12 @@ const ControlPanel = ({
         <OpacitySelector
           opacity={opacity}
           onOpacityChange={onOpacityChange}
+          disabled={displayStyle === DISPLAY_STYLES.DOTTED}
+        />
+
+        <FontSizeSelector
+          fontSize={fontSize}
+          onFontSizeChange={onFontSizeChange}
           disabled={displayStyle === DISPLAY_STYLES.DOTTED}
         />
 

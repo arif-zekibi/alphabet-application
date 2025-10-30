@@ -16,11 +16,13 @@ function App() {
     linesCount,
     displayStyle,
     opacity,
+    fontSize,
     handleLetterChange,
     handleCaseChange,
     handleLinesChange,
     handleDisplayStyleChange,
     handleOpacityChange,
+    handleFontSizeChange,
     handlePrint,
   } = useAlphabetPractice();
 
@@ -34,11 +36,13 @@ function App() {
           linesCount={linesCount}
           displayStyle={displayStyle}
           opacity={opacity}
+          fontSize={fontSize}
           onLetterChange={handleLetterChange}
           onCaseChange={handleCaseChange}
           onLinesChange={handleLinesChange}
           onDisplayStyleChange={handleDisplayStyleChange}
           onOpacityChange={handleOpacityChange}
+          onFontSizeChange={handleFontSizeChange}
           onPrint={handlePrint}
         />
       </div>
@@ -51,6 +55,7 @@ function App() {
           linesCount={linesCount}
           displayStyle={displayStyle}
           opacity={opacity}
+          fontSize={fontSize}
         />
       </div>
     </div>
