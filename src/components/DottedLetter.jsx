@@ -1,16 +1,17 @@
 /**
  * DottedLetter Component
- * Renders a single letter with dots for tracing practice
+ * Renders a single letter with dots for tracing practice or with opacity
  */
 
 import React from 'react';
 import { generateDottedLetterPath, convertCase } from '../utils/alphabetUtils';
-import { PRACTICE_CONFIG } from '../constants/appConstants';
+import { PRACTICE_CONFIG, DISPLAY_STYLES } from '../constants/appConstants';
 import '../styles/DottedLetter.css';
 
-const DottedLetter = ({ letter, caseType, position }) => {
+const DottedLetter = ({ letter, caseType, position, displayStyle, opacity }) => {
   const dots = generateDottedLetterPath(letter, caseType);
   const displayLetter = convertCase(letter, caseType);
+  const isDotted = displayStyle === DISPLAY_STYLES.DOTTED;
 
   return (
     <div className="dotted-letter" data-position={position}>
@@ -21,8 +22,8 @@ const DottedLetter = ({ letter, caseType, position }) => {
         aria-label={`Trace the letter ${displayLetter}`}
         preserveAspectRatio="xMidYMid meet"
       >
-        {/* Render dots for tracing */}
-        {dots.map((dot, index) => (
+        {/* Render dots for tracing (only in dotted mode) */}
+        {isDotted && dots.map((dot, index) => (
           <circle
             key={`dot-${index}`}
             cx={dot.x}
@@ -41,7 +42,8 @@ const DottedLetter = ({ letter, caseType, position }) => {
           fontFamily="Tw Cen MT, Century Gothic, Arial, sans-serif"
           fontWeight="normal"
           textAnchor="middle"
-          fill="#E0E0E0"
+          fill={isDotted ? "#E0E0E0" : "#000000"}
+          opacity={isDotted ? 1 : opacity}
           className="guide-letter"
           dominantBaseline="baseline"
         >

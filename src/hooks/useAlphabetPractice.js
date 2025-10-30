@@ -4,12 +4,14 @@
  */
 
 import { useState, useCallback } from 'react';
-import { CASE_TYPES, PRACTICE_CONFIG } from '../constants/appConstants';
+import { CASE_TYPES, PRACTICE_CONFIG, DISPLAY_STYLES } from '../constants/appConstants';
 
 const useAlphabetPractice = () => {
   const [selectedLetters, setSelectedLetters] = useState([]);
   const [selectedCase, setSelectedCase] = useState(CASE_TYPES.UPPERCASE);
   const [linesCount, setLinesCount] = useState(PRACTICE_CONFIG.LINES_PER_PAGE);
+  const [displayStyle, setDisplayStyle] = useState(DISPLAY_STYLES.DOTTED);
+  const [opacity, setOpacity] = useState(PRACTICE_CONFIG.DEFAULT_OPACITY);
 
   /**
    * Handle letter selection change (now supports multiple letters)
@@ -33,6 +35,20 @@ const useAlphabetPractice = () => {
   }, []);
 
   /**
+   * Handle display style change
+   */
+  const handleDisplayStyleChange = useCallback((style) => {
+    setDisplayStyle(style);
+  }, []);
+
+  /**
+   * Handle opacity change
+   */
+  const handleOpacityChange = useCallback((value) => {
+    setOpacity(value);
+  }, []);
+
+  /**
    * Handle print action
    */
   const handlePrint = useCallback(() => {
@@ -52,15 +68,21 @@ const useAlphabetPractice = () => {
     setSelectedLetters([]);
     setSelectedCase(CASE_TYPES.UPPERCASE);
     setLinesCount(PRACTICE_CONFIG.LINES_PER_PAGE);
+    setDisplayStyle(DISPLAY_STYLES.DOTTED);
+    setOpacity(PRACTICE_CONFIG.DEFAULT_OPACITY);
   }, []);
 
   return {
     selectedLetters,
     selectedCase,
     linesCount,
+    displayStyle,
+    opacity,
     handleLetterChange,
     handleCaseChange,
     handleLinesChange,
+    handleDisplayStyleChange,
+    handleOpacityChange,
     handlePrint,
     handleReset,
   };

@@ -8,7 +8,7 @@ import DottedLetter from './DottedLetter';
 import { PRACTICE_LINE_COLORS } from '../constants/appConstants';
 import '../styles/PracticeLine.css';
 
-const PracticeLine = ({ letters, caseType, lineNumber }) => {
+const PracticeLine = ({ letters, caseType, lineNumber, displayStyle, opacity }) => {
   if (!letters || letters.length === 0) return null;
 
   return (
@@ -43,6 +43,8 @@ const PracticeLine = ({ letters, caseType, lineNumber }) => {
             letter={letter}
             caseType={caseType}
             position={index}
+            displayStyle={displayStyle}
+            opacity={opacity}
           />
         ))}
       </div>

@@ -37,10 +37,19 @@ export const A4_DIMENSIONS = {
   HEIGHT_PX: 1123,
 };
 
+// Display style types
+export const DISPLAY_STYLES = {
+  DOTTED: 'dotted',
+  OPACITY: 'opacity',
+};
+
 // Practice line configuration
 export const PRACTICE_CONFIG = {
   LINES_PER_PAGE: 15,
   LETTER_SPACING: 60,
   DOT_SIZE: 8,
   DOT_COLOR: '#CCCCCC',
+  DEFAULT_OPACITY: 0.3,
+  MIN_OPACITY: 0.1,
+  MAX_OPACITY: 0.9,
 };

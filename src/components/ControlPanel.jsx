@@ -7,15 +7,22 @@ import React from 'react';
 import AlphabetSelector from './AlphabetSelector';
 import CaseSelector from './CaseSelector';
 import LinesSelector from './LinesSelector';
+import DisplayStyleSelector from './DisplayStyleSelector';
+import OpacitySelector from './OpacitySelector';
+import { DISPLAY_STYLES } from '../constants/appConstants';
 import '../styles/ControlPanel.css';
 
 const ControlPanel = ({
   selectedLetters,
   selectedCase,
   linesCount,
+  displayStyle,
+  opacity,
   onLetterChange,
   onCaseChange,
   onLinesChange,
+  onDisplayStyleChange,
+  onOpacityChange,
   onPrint,
 }) => {
   const canGenerate = selectedLetters.length > 0 && selectedCase;
@@ -43,6 +50,17 @@ const ControlPanel = ({
         <LinesSelector
           selectedLines={linesCount}
           onLinesChange={onLinesChange}
+        />
+
+        <DisplayStyleSelector
+          selectedStyle={displayStyle}
+          onStyleChange={onDisplayStyleChange}
+        />
+
+        <OpacitySelector
+          opacity={opacity}
+          onOpacityChange={onOpacityChange}
+          disabled={displayStyle === DISPLAY_STYLES.DOTTED}
         />
 
         <div className="action-buttons">

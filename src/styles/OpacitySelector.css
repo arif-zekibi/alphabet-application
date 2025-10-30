@@ -1,0 +1,111 @@
+/**
+ * OpacitySelector Component Styles
+ */
+
+.opacity-selector {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.opacity-selector.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.opacity-selector .selector-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+}
+
+.opacity-selector .opacity-value {
+  color: #4A90E2;
+  font-weight: 700;
+}
+
+.opacity-control {
+  margin-bottom: 1rem;
+}
+
+.opacity-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #e3f2fd, #1976d2);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.opacity-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4A90E2;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.opacity-slider::-webkit-slider-thumb:hover {
+  background: #357ABD;
+  transform: scale(1.1);
+}
+
+.opacity-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4A90E2;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.opacity-slider::-moz-range-thumb:hover {
+  background: #357ABD;
+  transform: scale(1.1);
+}
+
+.opacity-markers {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.opacity-markers .marker {
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+.opacity-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  min-height: 60px;
+}
+
+.opacity-preview .preview-letter {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: "Tw Cen MT", Century Gothic, Arial, sans-serif;
+  color: #000000;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .opacity-preview .preview-letter {
+    font-size: 2rem;
+  }
+}
