@@ -17,7 +17,6 @@ function App() {
     displayStyle,
     opacity,
     fontSize,
-    strokeWidth,
     fontWeight,
     handleLetterChange,
     handleCaseChange,
@@ -25,7 +24,6 @@ function App() {
     handleDisplayStyleChange,
     handleOpacityChange,
     handleFontSizeChange,
-    handleStrokeWidthChange,
     handleFontWeightChange,
     handlePrint,
   } = useAlphabetPractice();
@@ -41,7 +39,6 @@ function App() {
           displayStyle={displayStyle}
           opacity={opacity}
           fontSize={fontSize}
-          strokeWidth={strokeWidth}
           fontWeight={fontWeight}
           onLetterChange={handleLetterChange}
           onCaseChange={handleCaseChange}
@@ -49,7 +46,6 @@ function App() {
           onDisplayStyleChange={handleDisplayStyleChange}
           onOpacityChange={handleOpacityChange}
           onFontSizeChange={handleFontSizeChange}
-          onStrokeWidthChange={handleStrokeWidthChange}
           onFontWeightChange={handleFontWeightChange}
           onPrint={handlePrint}
         />
@@ -64,7 +60,6 @@ function App() {
           displayStyle={displayStyle}
           opacity={opacity}
           fontSize={fontSize}
-          strokeWidth={strokeWidth}
           fontWeight={fontWeight}
         />
       </div>

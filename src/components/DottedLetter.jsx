@@ -15,7 +15,6 @@ const DottedLetter = ({
   displayStyle,
   opacity,
   fontSize = PRACTICE_CONFIG.DEFAULT_FONT_SIZE,
-  strokeWidth = PRACTICE_CONFIG.DEFAULT_STROKE_WIDTH,
   fontWeight = PRACTICE_CONFIG.DEFAULT_FONT_WEIGHT
 }) => {
   const dots = generateDottedLetterPath(letter, caseType);
@@ -51,10 +50,8 @@ const DottedLetter = ({
           fontFamily="Tw Cen MT, Century Gothic, Arial, sans-serif"
           fontWeight={isDotted ? "normal" : fontWeight}
           textAnchor="middle"
-          fill={isDotted ? "#E0E0E0" : (strokeWidth > 0 ? "none" : "#000000")}
+          fill={isDotted ? "#E0E0E0" : "#000000"}
           opacity={isDotted ? 1 : opacity}
-          stroke={strokeWidth > 0 ? "#000000" : "none"}
-          strokeWidth={strokeWidth}
           className="guide-letter"
           dominantBaseline="baseline"
         >
