@@ -21,12 +21,41 @@ export const convertCase = (letter, caseType) => {
  */
 export const generateDottedLetterPath = (letter, caseType) => {
   const convertedLetter = convertCase(letter, caseType);
-
-  // This is a simplified dot pattern generator
-  // In production, you'd want detailed SVG paths for each letter
   const letterPatterns = getDotPattern(convertedLetter);
 
-  return letterPatterns;
+  // Normalize coordinates to fit the 4-line system (0, 33, 66, 100)
+  return letterPatterns.map(point => {
+    let newY = point.y;
+    
+    if (caseType === 'uppercase') {
+      // Uppercase Normalization
+      // Map [10, 60] to [0, 66]
+      // Linear transform: y' = (y - 10) * (66 / 50)
+      newY = (point.y - 10) * 1.32;
+      // Clamp to avoid going out of bounds
+      newY = Math.max(0, newY);
+    } else {
+      // Lowercase Normalization (Piecewise)
+      // Original ranges: Ascender [10-42], Body [42-80], Descender [80-90+]
+      // Target ranges: Ascender [0-33], Body [33-66], Descender [66-100]
+      
+      if (point.y < 42) {
+        // Ascender zone
+        newY = (point.y - 10) * (33 / 32);
+      } else if (point.y <= 80) {
+        // x-height zone
+        newY = 33 + (point.y - 42) * (33 / 38);
+      } else {
+        // Descender zone
+        newY = 66 + (point.y - 80) * (34 / 15); // Stretched to reach bottom
+      }
+    }
+
+    return {
+      x: point.x, // Keep X as is (centered enough)
+      y: newY
+    };
+  });
 };
 
 /**

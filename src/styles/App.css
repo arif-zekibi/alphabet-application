@@ -11,12 +11,22 @@
 /* Screen view styles */
 @media screen {
   .app {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: var(--spacing-lg);
+    background: #f0f2f5; /* Softer background */
+    padding: 0;
+    flex-direction: row; /* Side-by-side layout */
+    height: 100vh;
+    overflow: hidden;
   }
 
   .no-print {
     display: block;
+    width: 350px;
+    min-width: 350px;
+    background: white;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    z-index: 10;
   }
 
   .print-area {
@@ -24,7 +34,9 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin-top: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+    background-color: #f5f7fa;
   }
 }
 

@@ -14,17 +14,17 @@ const FontWeightSelector = ({ fontWeight, onFontWeightChange }) => {
   };
 
   const getWeightLabel = (weight) => {
-    if (weight <= 200) return 'Thin';
-    if (weight <= 400) return 'Normal';
-    if (weight <= 600) return 'Semi-Bold';
-    if (weight <= 800) return 'Bold';
-    return 'Black';
+    if (weight <= 200) return 'Ultra Thin';
+    if (weight <= 300) return 'Thin';
+    if (weight <= 500) return 'Normal';
+    if (weight <= 700) return 'Thick';
+    return 'Ultra Thick';
   };
 
   return (
     <div className="font-weight-selector">
       <label className="selector-label">
-        Font Thickness: <span className="weight-value">{fontWeight} ({getWeightLabel(fontWeight)})</span>
+        Letter Thickness: <span className="weight-value">{getWeightLabel(fontWeight)}</span>
       </label>
       <div className="weight-control">
         <input
@@ -40,8 +40,7 @@ const FontWeightSelector = ({ fontWeight, onFontWeightChange }) => {
         <div className="weight-markers">
           <span className="marker">Thin</span>
           <span className="marker">Normal</span>
-          <span className="marker">Bold</span>
-          <span className="marker">Black</span>
+          <span className="marker">Thick</span>
         </div>
       </div>
       <div className="weight-preview">

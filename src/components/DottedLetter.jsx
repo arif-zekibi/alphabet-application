@@ -21,6 +21,14 @@ const DottedLetter = ({
   const displayLetter = convertCase(letter, caseType);
   const isDotted = displayStyle === DISPLAY_STYLES.DOTTED;
 
+  // Calculate dot radius based on font weight (thickness)
+  // Map weight 100-1000 to radius 1-8 (Diameter 2-16)
+  // Base size (400 weight) should be close to original 4px radius
+  const minRadius = 1;
+  const maxRadius = 8;
+  const normalizedWeight = (fontWeight - PRACTICE_CONFIG.MIN_FONT_WEIGHT) / (PRACTICE_CONFIG.MAX_FONT_WEIGHT - PRACTICE_CONFIG.MIN_FONT_WEIGHT);
+  const dotRadius = minRadius + (normalizedWeight * (maxRadius - minRadius));
+
   return (
     <div className="dotted-letter" data-position={position}>
       <svg
@@ -36,27 +44,30 @@ const DottedLetter = ({
             key={`dot-${index}`}
             cx={dot.x}
             cy={dot.y}
-            r={PRACTICE_CONFIG.DOT_SIZE / 2}
+            r={dotRadius}
             fill={PRACTICE_CONFIG.DOT_COLOR}
             className="trace-dot"
           />
         ))}
 
-        {/* Show letter aligned with three-line system */}
-        <text
-          x="50"
-          y="70"
-          fontSize={isDotted ? 45 : fontSize}
-          fontFamily="Tw Cen MT, Century Gothic, Arial, sans-serif"
-          fontWeight={isDotted ? "normal" : fontWeight}
-          textAnchor="middle"
-          fill={isDotted ? "#E0E0E0" : "#000000"}
-          opacity={isDotted ? 1 : opacity}
-          className="guide-letter"
-          dominantBaseline="baseline"
-        >
-          {displayLetter}
-        </text>
+        {/* Show letter aligned with four-line system (Baseline is at ~66%) */}
+        {/* Only show guide letter if NOT in dotted mode (or if opacity mode is active) */}
+        {!isDotted && (
+          <text
+            x="50"
+            y="68" /* Adjusted to sit on the baseline */
+            fontSize={fontSize}
+            fontFamily="'Outfit', sans-serif"
+            fontWeight={fontWeight}
+            textAnchor="middle"
+            fill="#000000"
+            opacity={opacity}
+            className="guide-letter"
+            dominantBaseline="alphabetic"
+          >
+            {displayLetter}
+          </text>
+        )}
       </svg>
     </div>
   );

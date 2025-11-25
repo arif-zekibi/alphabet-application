@@ -13,25 +13,19 @@ const PracticeLine = ({ letters, caseType, lineNumber, displayStyle, opacity, fo
 
   return (
     <div className="practice-line" data-line-number={lineNumber}>
-      {/* Three guide lines - blue, red, blue */}
+      {/* Four guide lines - Top, Middle-Top, Baseline, Bottom */}
       <div className="guide-lines">
-        {/* Top line - Blue */}
-        <div
-          className="guide-line guide-line-top"
-          style={{ borderColor: '#4A90E2' }}
-        />
+        {/* Top Line (Ascender) */}
+        <div className="guide-line guide-line-top" />
 
-        {/* Middle line - Red (baseline for writing) */}
-        <div
-          className="guide-line guide-line-middle"
-          style={{ borderColor: '#E74C3C' }}
-        />
+        {/* Middle Top Line (Dashed) */}
+        <div className="guide-line guide-line-middle-top" />
 
-        {/* Bottom line - Blue */}
-        <div
-          className="guide-line guide-line-bottom"
-          style={{ borderColor: '#4A90E2' }}
-        />
+        {/* Baseline (Main writing line) */}
+        <div className="guide-line guide-line-baseline" />
+
+        {/* Bottom Line (Descender) */}
+        <div className="guide-line guide-line-bottom" />
       </div>
 
       {/* Dotted letters for tracing */}

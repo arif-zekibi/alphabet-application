@@ -29,22 +29,31 @@
 }
 
 /* Three-line positions */
+/* Four-line positions */
 .guide-line-top {
   top: 0;
-  border-top-style: solid;
-  border-top-width: 2px;
+  border-top-color: #E8E8E8;
+  /* Light Gray */
 }
 
-.guide-line-middle {
-  top: 50%;
-  border-top-style: solid;
+.guide-line-middle-top {
+  top: 33.33%;
+  border-top-style: dashed;
+  border-top-color: #FFB6C1;
+  /* Light Pink */
+}
+
+.guide-line-baseline {
+  top: 66.66%;
+  border-top-color: #87CEEB;
+  /* Sky Blue */
   border-top-width: 2px;
 }
 
 .guide-line-bottom {
   top: 100%;
-  border-top-style: solid;
-  border-top-width: 2px;
+  border-top-color: #E8E8E8;
+  /* Light Gray */
 }
 
 /* Letters Container */
