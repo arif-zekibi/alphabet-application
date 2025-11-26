@@ -4,8 +4,8 @@
 
 .dotted-letter {
   flex: 0 0 auto;
-  width: 70px;
-  height: 65px;
+  width: calc(100% / var(--letters-per-line));
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

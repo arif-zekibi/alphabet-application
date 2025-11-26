@@ -14,6 +14,8 @@ const useAlphabetPractice = () => {
   const [opacity, setOpacity] = useState(PRACTICE_CONFIG.DEFAULT_OPACITY);
   const [fontSize, setFontSize] = useState(PRACTICE_CONFIG.DEFAULT_FONT_SIZE);
   const [fontWeight, setFontWeight] = useState(PRACTICE_CONFIG.DEFAULT_FONT_WEIGHT);
+  const [lettersPerLine, setLettersPerLine] = useState(PRACTICE_CONFIG.DEFAULT_LETTERS_PER_LINE);
+  const [lineHeight, setLineHeight] = useState(PRACTICE_CONFIG.DEFAULT_LINE_HEIGHT);
 
   /**
    * Handle letter selection change (now supports multiple letters)
@@ -65,6 +67,20 @@ const useAlphabetPractice = () => {
   }, []);
 
   /**
+   * Handle letters per line change
+   */
+  const handleLettersPerLineChange = useCallback((value) => {
+    setLettersPerLine(value);
+  }, []);
+
+  /**
+   * Handle line height change
+   */
+  const handleLineHeightChange = useCallback((value) => {
+    setLineHeight(value);
+  }, []);
+
+  /**
    * Handle print action
    */
   const handlePrint = useCallback(() => {
@@ -88,6 +104,8 @@ const useAlphabetPractice = () => {
     setOpacity(PRACTICE_CONFIG.DEFAULT_OPACITY);
     setFontSize(PRACTICE_CONFIG.DEFAULT_FONT_SIZE);
     setFontWeight(PRACTICE_CONFIG.DEFAULT_FONT_WEIGHT);
+    setLettersPerLine(PRACTICE_CONFIG.DEFAULT_LETTERS_PER_LINE);
+    setLineHeight(PRACTICE_CONFIG.DEFAULT_LINE_HEIGHT);
   }, []);
 
   return {
@@ -98,6 +116,8 @@ const useAlphabetPractice = () => {
     opacity,
     fontSize,
     fontWeight,
+    lettersPerLine,
+    lineHeight,
     handleLetterChange,
     handleCaseChange,
     handleLinesChange,
@@ -105,6 +125,8 @@ const useAlphabetPractice = () => {
     handleOpacityChange,
     handleFontSizeChange,
     handleFontWeightChange,
+    handleLettersPerLineChange,
+    handleLineHeightChange,
     handlePrint,
     handleReset,
   };

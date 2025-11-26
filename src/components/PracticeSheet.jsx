@@ -8,7 +8,17 @@ import PracticeLine from './PracticeLine';
 import { PRACTICE_CONFIG } from '../constants/appConstants';
 import '../styles/PracticeSheet.css';
 
-const PracticeSheet = ({ letters, caseType, linesCount = PRACTICE_CONFIG.LINES_PER_PAGE, displayStyle, opacity, fontSize, fontWeight }) => {
+const PracticeSheet = ({
+  letters,
+  caseType,
+  linesCount = PRACTICE_CONFIG.LINES_PER_PAGE,
+  displayStyle,
+  opacity,
+  fontSize,
+  fontWeight,
+  lettersPerLine = PRACTICE_CONFIG.DEFAULT_LETTERS_PER_LINE,
+  lineHeight = PRACTICE_CONFIG.DEFAULT_LINE_HEIGHT,
+}) => {
   if (!letters || letters.length === 0) {
     return (
       <div className="practice-sheet-empty">
@@ -20,8 +30,7 @@ const PracticeSheet = ({ letters, caseType, linesCount = PRACTICE_CONFIG.LINES_P
   }
 
   // Calculate total positions needed (lines * letters per line)
-  const LETTERS_PER_LINE = 5;
-  const totalPositions = linesCount * LETTERS_PER_LINE;
+  const totalPositions = linesCount * lettersPerLine;
 
   // Create a continuous flow of letters across all lines
   const allLetters = [];
@@ -32,8 +41,8 @@ const PracticeSheet = ({ letters, caseType, linesCount = PRACTICE_CONFIG.LINES_P
   // Split into lines
   const linesData = [];
   for (let i = 0; i < linesCount; i++) {
-    const startIndex = i * LETTERS_PER_LINE;
-    const lineLetters = allLetters.slice(startIndex, startIndex + LETTERS_PER_LINE);
+    const startIndex = i * lettersPerLine;
+    const lineLetters = allLetters.slice(startIndex, startIndex + lettersPerLine);
     linesData.push(lineLetters);
   }
 
@@ -51,6 +60,8 @@ const PracticeSheet = ({ letters, caseType, linesCount = PRACTICE_CONFIG.LINES_P
             opacity={opacity}
             fontSize={fontSize}
             fontWeight={fontWeight}
+            lettersPerLine={lettersPerLine}
+            lineHeight={lineHeight}
           />
         ))}
       </div>
