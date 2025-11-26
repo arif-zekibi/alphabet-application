@@ -30,6 +30,7 @@ function App() {
     handleLettersPerLineChange,
     handleLineHeightChange,
     handlePrint,
+    applyConfig,
   } = useAlphabetPractice();
 
   return (
@@ -56,6 +57,7 @@ function App() {
           onLettersPerLineChange={handleLettersPerLineChange}
           onLineHeightChange={handleLineHeightChange}
           onPrint={handlePrint}
+          onApplyConfig={applyConfig}
         />
       </div>
 

@@ -32,30 +32,15 @@ const DottedLetter = ({
   return (
     <div className="dotted-letter" data-position={position}>
       <svg
-        className="letter-svg"
         viewBox="0 0 100 100"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-label={`Trace the letter ${displayLetter}`}
-        preserveAspectRatio="xMidYMid meet"
+        className="letter-svg"
+        preserveAspectRatio="none"
       >
-        {/* Render dots for tracing (only in dotted mode) */}
-        {isDotted && dots.map((dot, index) => (
-          <circle
-            key={`dot-${index}`}
-            cx={dot.x}
-            cy={dot.y}
-            r={dotRadius}
-            fill={PRACTICE_CONFIG.DOT_COLOR}
-            className="trace-dot"
-          />
-        ))}
-
-        {/* Show letter aligned with four-line system (Baseline is at ~66%) */}
-        {/* Only show guide letter if NOT in dotted mode (or if opacity mode is active) */}
+        {/* Guide Letter (Solid) - displayed when not dotted or as background */}
         {!isDotted && (
           <text
             x="50"
-            y="66.66" /* True baseline */
+            y="66.66" /* Adjusted to sit on the baseline */
             fontSize={fontSize}
             fontFamily="'Outfit', sans-serif"
             fontWeight={fontWeight}
@@ -67,6 +52,22 @@ const DottedLetter = ({
           >
             {displayLetter}
           </text>
+        )}
+
+        {/* Dotted Letter Path */}
+        {isDotted && (
+          <g className="dots-group">
+            {dots.map((dot, index) => (
+              <circle
+                key={index}
+                cx={dot.x}
+                cy={dot.y}
+                r={dotRadius}
+                fill="#000000"
+                className="trace-dot"
+              />
+            ))}
+          </g>
         )}
       </svg>
     </div>

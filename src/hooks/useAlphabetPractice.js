@@ -108,6 +108,21 @@ const useAlphabetPractice = () => {
     setLineHeight(PRACTICE_CONFIG.DEFAULT_LINE_HEIGHT);
   }, []);
 
+  /**
+   * Apply a full configuration object
+   */
+  const applyConfig = useCallback((config) => {
+    if (config.selectedLetters) setSelectedLetters(config.selectedLetters);
+    if (config.selectedCase) setSelectedCase(config.selectedCase);
+    if (config.linesCount) setLinesCount(config.linesCount);
+    if (config.displayStyle) setDisplayStyle(config.displayStyle);
+    if (config.opacity !== undefined) setOpacity(config.opacity);
+    if (config.fontSize) setFontSize(config.fontSize);
+    if (config.fontWeight) setFontWeight(config.fontWeight);
+    if (config.lettersPerLine) setLettersPerLine(config.lettersPerLine);
+    if (config.lineHeight) setLineHeight(config.lineHeight);
+  }, []);
+
   return {
     selectedLetters,
     selectedCase,
@@ -118,6 +133,7 @@ const useAlphabetPractice = () => {
     fontWeight,
     lettersPerLine,
     lineHeight,
+    applyConfig,
     handleLetterChange,
     handleCaseChange,
     handleLinesChange,

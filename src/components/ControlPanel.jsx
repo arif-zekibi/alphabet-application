@@ -12,6 +12,7 @@ import OpacitySelector from './OpacitySelector';
 import FontSizeSelector from './FontSizeSelector';
 import FontWeightSelector from './FontWeightSelector';
 import LayoutSelector from './LayoutSelector';
+import ConfigManager from './ConfigManager';
 import { DISPLAY_STYLES } from '../constants/appConstants';
 import '../styles/ControlPanel.css';
 
@@ -35,7 +36,21 @@ const ControlPanel = ({
   onLettersPerLineChange,
   onLineHeightChange,
   onPrint,
+  onApplyConfig,
 }) => {
+  // Bundle current config for saving
+  const currentConfig = {
+    selectedLetters,
+    selectedCase,
+    linesCount,
+    displayStyle,
+    opacity,
+    fontSize,
+    fontWeight,
+    lettersPerLine,
+    lineHeight
+  };
+
   const canGenerate = selectedLetters.length > 0 && selectedCase;
 
   return (
@@ -103,6 +118,11 @@ const ControlPanel = ({
           </button>
         </div>
       </div>
+
+      <ConfigManager
+        currentConfig={currentConfig}
+        onApplyConfig={onApplyConfig}
+      />
 
       {!canGenerate && (
         <div className="help-text">

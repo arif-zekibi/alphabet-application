@@ -1,0 +1,102 @@
+.config-manager {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border-top: 1px solid #eee;
+}
+
+.config-title {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: var(--color-text);
+}
+
+.config-actions {
+    margin-bottom: 15px;
+}
+
+.save-input-group {
+    display: flex;
+    gap: 8px;
+}
+
+.config-name-input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.saved-list {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.no-configs {
+    padding: 10px;
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.config-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.config-item:last-child {
+    border-bottom: none;
+}
+
+.config-item:hover {
+    background-color: #f9f9f9;
+}
+
+.config-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.item-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 2px 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-icon:hover {
+    background-color: #eee;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #666;
+}
+
+.btn-outline:hover {
+    background: #f5f5f5;
+}
