@@ -25,7 +25,7 @@ const OpacitySelector = ({ opacity, onOpacityChange, disabled }) => {
           type="range"
           min={PRACTICE_CONFIG.MIN_OPACITY}
           max={PRACTICE_CONFIG.MAX_OPACITY}
-          step="0.1"
+          step="0.01"
           value={opacity}
           onChange={handleOpacityChange}
           disabled={disabled}

@@ -55,7 +55,7 @@ const DottedLetter = ({
         {!isDotted && (
           <text
             x="50"
-            y="68" /* Adjusted to sit on the baseline */
+            y="66.66" /* True baseline */
             fontSize={fontSize}
             fontFamily="'Outfit', sans-serif"
             fontWeight={fontWeight}
