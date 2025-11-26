@@ -71,7 +71,6 @@
 /* Print Styles */
 @media print {
   .practice-line {
-    height: 50px;
     margin-bottom: 5mm;
     page-break-inside: avoid;
     break-inside: avoid;

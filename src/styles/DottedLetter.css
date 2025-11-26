@@ -19,49 +19,7 @@
 
 .trace-dot {
   transition: fill var(--transition-fast);
+  width: 60px;
+  height: 60px;
 }
-
-.trace-dot:hover {
-  fill: var(--color-primary);
-}
-
-.guide-letter {
-  pointer-events: none;
-}
-
-/* Print Styles */
-@media print {
-  .dotted-letter {
-    width: 50px;
-    height: 50px;
-  }
-
-  .trace-dot {
-    fill: #999999;
-  }
-
-  .guide-letter {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-    color-adjust: exact;
-  }
-
-  /* Ensure dots are visible when printed */
-  .trace-dot {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-    color-adjust: exact;
-  }
-
-  .letter-svg {
-    overflow: visible;
-  }
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .dotted-letter {
-    width: 60px;
-    height: 60px;
-  }
 }
