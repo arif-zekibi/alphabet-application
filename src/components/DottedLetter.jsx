@@ -56,7 +56,12 @@ const DottedLetter = ({
 
         {/* Dotted Letter Path */}
         {isDotted && (
-          <g className="dots-group">
+          <g
+            className="dots-group"
+            opacity={opacity}
+            transform={`scale(${fontSize / PRACTICE_CONFIG.DEFAULT_FONT_SIZE})`}
+            transform-origin="50 50"
+          >
             {dots.map((dot, index) => (
               <circle
                 key={index}

@@ -35,20 +35,12 @@ export const generateDottedLetterPath = (letter, caseType) => {
       // Clamp to avoid going out of bounds
       newY = Math.max(0, newY);
     } else {
-      // Lowercase Normalization (Piecewise)
-      // Original ranges: Ascender [10-42], Body [42-80], Descender [80-90+]
-      // Target ranges: Ascender [0-33], Body [33-66], Descender [66-100]
+      // Lowercase Normalization (Uniform Scaling)
+      // Map x-height range [42, 80] to [33, 66]
+      // Scale factor: (66 - 33) / (80 - 42) = 33 / 38 ≈ 0.868
+      // Shift: newY = 33 + (point.y - 42) * (33 / 38)
       
-      if (point.y < 42) {
-        // Ascender zone
-        newY = (point.y - 10) * (33 / 32);
-      } else if (point.y <= 80) {
-        // x-height zone
-        newY = 33 + (point.y - 42) * (33 / 38);
-      } else {
-        // Descender zone
-        newY = 66 + (point.y - 80) * (34 / 15); // Stretched to reach bottom
-      }
+      newY = 33 + (point.y - 42) * (33 / 38);
     }
 
     return {

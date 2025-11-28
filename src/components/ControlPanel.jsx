@@ -86,13 +86,11 @@ const ControlPanel = ({
         <OpacitySelector
           opacity={opacity}
           onOpacityChange={onOpacityChange}
-          disabled={displayStyle === DISPLAY_STYLES.DOTTED}
         />
 
         <FontSizeSelector
           fontSize={fontSize}
           onFontSizeChange={onFontSizeChange}
-          disabled={displayStyle === DISPLAY_STYLES.DOTTED}
         />
 
         <FontWeightSelector
